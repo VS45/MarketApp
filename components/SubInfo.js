@@ -1,23 +1,53 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
-import { SIZES, FONTS, SHADOWS, assets } from "../constants";
+import { SIZES, FONTS, SHADOWS, assets, COLORS } from "../constants";
 
-export const NFTTitle = () => {
+export const NFTTitle = ({ title, titleSize, subTitle, subTitleSize }) => {
   return (
     <View>
-      <Text>NFTTitle</Text>
+      <Text
+        style={{
+          fontFamily: FONTS.semiBold,
+          fontSize: titleSize,
+          color: COLORS.primary,
+        }}
+      >
+        {title}
+      </Text>
+      <Text
+        style={{
+          fontFamily: FONTS.regular,
+          fontSize: subTitleSize,
+          color: COLORS.primary,
+        }}
+      >
+        {subTitle}
+      </Text>
     </View>
   );
 };
 
-export const EthPrice = () => {
+export const EthPrice = ({ price }) => {
   return (
-    <View>
-      <Text>EthPrice</Text>
+    <View style={{ flexDirection: "row", alignItems: "center" }}>
+      <Image
+        source={assets.eth}
+        resizeMode="contain"
+        style={{ width: 20, height: 20, marginRight: 2 }}
+      />
+      <Text
+        style={{
+          fontFamily: FONTS.medium,
+          fontSize: SIZES.font,
+          color: COLORS.primary,
+        }}
+      >
+        {price}
+      </Text>
     </View>
   );
 };
-export const ImageCmp = ({imgUrl,index}) => {
+export const ImageCmp = ({ imgUrl, index }) => {
   return (
     <View>
       <Image
@@ -25,8 +55,8 @@ export const ImageCmp = ({imgUrl,index}) => {
         resizeMode="contain"
         style={{
           width: 48,
-            height: 48,
-          marginLeft:index===0?0:-SIZES.font
+          height: 48,
+          marginLeft: index === 0 ? 0 : -SIZES.font,
         }}
       />
     </View>
@@ -45,21 +75,44 @@ export const People = () => {
         flexDirection: "row",
       }}
     >
-          {personsArray.map((imgUrl, index) => (
-      
-          <ImageCmp
-              imgUrl={imgUrl}
-              index={index}
-              key={`People-${index}`}
-          />
-    ) )}
+      {personsArray.map((imgUrl, index) => (
+        <ImageCmp imgUrl={imgUrl} index={index} key={`People-${index}`} />
+      ))}
     </View>
   );
 };
 export const EndDate = () => {
   return (
-    <View>
-      <Text>EndDate</Text>
+    <View
+      style={{
+        paddingHorizontal: SIZES.font,
+        paddingVertical: SIZES.base,
+        backgroundColor: COLORS.white,
+        justifyContent: "center",
+        alignItems: "center",
+        ...SHADOWS.light,
+        elevation: 1,
+        maxWidth: "50%",
+      }}
+    >
+      <Text
+        style={{
+          fontFamily: FONTS.regular,
+          fontSize: SIZES.small,
+          color: COLORS.primary,
+        }}
+      >
+        Ending in
+      </Text>
+      <Text
+        style={{
+          fontFamily: FONTS.semiBold,
+          fontSize: SIZES.medium,
+          color: COLORS.primary,
+        }}
+      >
+        12hrs 3min
+      </Text>
     </View>
   );
 };
