@@ -3,7 +3,16 @@ import { EthPrice } from "./SubInfo";
 import { COLORS, SIZES, FONTS } from "../constants";
 const DetailsBid = ({ bid }) => {
   return (
-    <View>
+    <View
+      style={{
+        flexDirection: "row",
+        width: "100%",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginVertical: SIZES.base,
+        paddingHorizontal: 15,
+      }}
+    >
       <Image
         source={bid.image}
         resizeMode="contain"
